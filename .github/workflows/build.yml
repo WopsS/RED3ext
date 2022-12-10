@@ -1,0 +1,63 @@
+name: Build Workflow
+
+on:
+  push:
+    branches: '**'
+  pull_request:
+
+jobs:
+  build:
+    name: Build (${{ matrix.config }})
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        config: [Debug, Release]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Create environment variables
+        run: |
+          $sha = (git rev-parse --short $env:GITHUB_SHA)
+          echo "RED3EXT_COMMIT_SHA=${sha}" | Out-File -FilePath $env:GITHUB_ENV -Encoding UTF8 -Append
+
+          $config = "${{ matrix.config }}".ToLower()
+          echo "RED3EXT_PRETTY_CONFIG=${config}" | Out-File -FilePath $env:GITHUB_ENV -Encoding UTF8 -Append
+
+      - name: Create build directory
+        run: mkdir build
+
+      - name: Configure
+        working-directory: build
+        run: |
+          cmake `
+            -DRED3EXT_INSTALL=ON `
+            -DRED3EXT_EXTRA_WARNINGS=ON `
+            -DRED3EXT_TREAT_WARNINGS_AS_ERRORS=ON `
+            "${{ github.workspace }}"
+
+      - name: Build
+        working-directory: build
+        run: |
+          cmake `
+            --build . `
+            --config ${{ matrix.config }}
+
+      - name: Install
+        working-directory: build
+        run: |
+          cmake `
+            --install . `
+            --prefix "${{ github.workspace }}/build/install" `
+            --config ${{ matrix.config }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: red3ext_${{ env.RED3EXT_PRETTY_CONFIG }}_${{ env.RED3EXT_COMMIT_SHA }}
+          path: build/install

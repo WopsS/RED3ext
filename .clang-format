@@ -1,0 +1,17 @@
+---
+BasedOnStyle: Microsoft
+---
+Language: Cpp
+
+AccessModifierOffset: -4
+AlwaysBreakTemplateDeclarations: Yes
+BreakBeforeBraces: Allman
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+KeepEmptyLinesAtTheStartOfBlocks: false
+PointerAlignment: Left
+SpaceAfterTemplateKeyword: false
+
+# Uncomment these after GitHub's Windows runner supports LLVM 15.
+#IndentRequiresClause: false
+#RequiresClausePosition: OwnLine
