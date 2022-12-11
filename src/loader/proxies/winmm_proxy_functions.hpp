@@ -2,7 +2,9 @@
 
 #include <Windows.h>
 
+// Order is important for "mmsystem.h" and "mmddk.h".
 #include <mmsystem.h>
+// After "mmsystem.h".
 #include <mmddk.h>
 
 namespace red3ext

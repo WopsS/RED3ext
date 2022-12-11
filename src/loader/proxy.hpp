@@ -2,8 +2,8 @@
 
 #include <string_view>
 
-#include "core/paths.hpp"
 #include "core/movable_but_not_copyable.hpp"
+#include "core/paths.hpp"
 
 namespace red3ext
 {
