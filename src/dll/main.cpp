@@ -1,6 +1,8 @@
+#include "core/common.hpp"
+
 BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved)
 {
-    (void)reserved;
+    RED3EXT_UNUSED_PARAMETER(reserved);
 
     switch (reason)
     {

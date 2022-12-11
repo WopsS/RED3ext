@@ -57,7 +57,13 @@ add_link_options(
 )
 
 # -----------------------------------------------------------------------------
-# Options related to compiler warnings for this project
+# Dependencies
+# -----------------------------------------------------------------------------
+include(deps/ConfigureAndIncludeFmt)
+include(deps/ConfigureAndIncludeWil)
+
+# -----------------------------------------------------------------------------
+# Options / configuration related only to this project
 # -----------------------------------------------------------------------------
 option(RED3EXT_EXTRA_WARNINGS "Enable extra warnings." ON)
 if(RED3EXT_EXTRA_WARNINGS)
@@ -85,6 +91,7 @@ if(RED3EXT_TREAT_WARNINGS_AS_ERRORS)
   endif()
 endif()
 
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
 # -----------------------------------------------------------------------------
 # Main projects
 # -----------------------------------------------------------------------------
