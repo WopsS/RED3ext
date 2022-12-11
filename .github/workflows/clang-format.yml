@@ -3,6 +3,9 @@ name: Clang-Format Workflow
 on:
   push:
     branches: '**'
+    paths:
+      - '**.hpp'
+      - '**.cpp'
   pull_request:
 
 jobs:

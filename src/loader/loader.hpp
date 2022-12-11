@@ -12,4 +12,4 @@ public:
 
     void run(const paths& paths) const;
 };
-}
+} // namespace red3ext
