@@ -46,6 +46,12 @@ target_sources(
       ${RED3EXT_DLL_RC_FILES}
 )
 
+target_link_libraries(
+  RED3ext.Dll
+    PRIVATE
+      RED3ext.Core
+)
+
 target_precompile_headers(RED3ext.Dll PRIVATE stdafx.hpp)
 
 get_target_property(RED3EXT_RESOURCE_PRODUCT_NAME RED3ext.Dll OUTPUT_NAME)
