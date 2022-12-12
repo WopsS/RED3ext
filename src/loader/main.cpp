@@ -36,14 +36,14 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID reserved)
         }
         catch (const std::exception& e)
         {
-            red3ext::narrow_message_box("RED4ext (Loader) - Exception occured in 'DllMain'")
+            red3ext::narrow_message_box("RED3ext (Loader) - Exception occured in 'DllMain'")
                 .change_message(e.what())
                 .change_flags(message_box_flags)
                 .show();
         }
         catch (...)
         {
-            red3ext::narrow_message_box("RED4ext (Loader) - Unknown exception occured in 'DllMain'")
+            red3ext::narrow_message_box("RED3ext (Loader) - Unknown exception occured in 'DllMain'")
                 .change_message("An unknown exception occured :(")
                 .change_flags(message_box_flags)
                 .show();
