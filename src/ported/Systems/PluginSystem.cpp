@@ -255,7 +255,7 @@ bool PluginSystem::CheckIfSupportsGame(const std::filesystem::path& aPath, const
         return false;
     }
 
-    if (_stricmp(supportedVersion, "independent"))
+    if (_stricmp(supportedVersion, "independent") == 0)
     {
         return true;
     }
