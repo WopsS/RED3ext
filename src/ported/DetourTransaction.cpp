@@ -1,6 +1,5 @@
 #include "DetourTransaction.hpp"
 #include "Utils.hpp"
-#include "stdafx.hpp"
 
 DetourTransaction::DetourTransaction(const std::source_location aSource)
     : m_source(aSource)
