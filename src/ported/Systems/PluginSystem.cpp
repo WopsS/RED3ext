@@ -255,6 +255,11 @@ bool PluginSystem::CheckIfSupportsGame(const std::filesystem::path& aPath, const
         return false;
     }
 
+    if (_stricmp(supportedVersion, "independent"))
+    {
+        return true;
+    }
+
     const auto image = Image::Get();
     const auto supportedVersions = image->GetSupportedVersions();
     for (const auto& version : supportedVersions)
