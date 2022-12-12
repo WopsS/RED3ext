@@ -54,8 +54,9 @@ bool Plugin::Main(EMainReason aReason)
         }
         catch (...)
         {
-            spdlog::warn(L"An unknown exception occured while calling 'Main' function with reason '{}', exported by '{}'",
-                         reasonStr, name);
+            spdlog::warn(
+                L"An unknown exception occured while calling 'Main' function with reason '{}', exported by '{}'",
+                reasonStr, name);
             return false;
         }
     }

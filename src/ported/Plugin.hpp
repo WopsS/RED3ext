@@ -4,7 +4,7 @@ enum class EMainReason : uint8_t
 {
     Load = 0,
     Unload
-}; 
+};
 
 class Plugin
 {

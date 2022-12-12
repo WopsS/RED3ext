@@ -1,4 +1,3 @@
-#include "stdafx.hpp"
 #include "App.hpp"
 #include "DetourTransaction.hpp"
 #include "Image.hpp"
@@ -70,7 +69,8 @@ App::App()
     const auto image = Image::Get();
 
     const auto& productVer = image->GetProductVersion();
-    spdlog::info("Game version is {}.{}.{}.{}", productVer.major, productVer.minor, productVer.build, productVer.revision);
+    spdlog::info("Game version is {}.{}.{}.{}", productVer.major, productVer.minor, productVer.build,
+                 productVer.revision);
 
     const auto& fileVer = image->GetFileVersion();
     spdlog::info("File version is {}.{}.{}.{}", fileVer.major, fileVer.minor, fileVer.build, fileVer.revision);
