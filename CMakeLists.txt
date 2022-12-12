@@ -62,6 +62,8 @@ add_link_options(
 include(deps/ConfigureAndIncludeDetours)
 include(deps/ConfigureAndIncludeFmt)
 include(deps/ConfigureAndIncludeSpdlog)
+include(deps/ConfigureAndIncludeToml11)
+include(deps/ConfigureAndIncludeTslOrderedMap)
 include(deps/ConfigureAndIncludeWil)
 
 # -----------------------------------------------------------------------------

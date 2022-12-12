@@ -50,6 +50,7 @@ target_link_libraries(
   RED3ext.Dll
     PRIVATE
       RED3ext.Core
+      RED4ext.Ported
 )
 
 target_precompile_headers(RED3ext.Dll PRIVATE stdafx.hpp)
