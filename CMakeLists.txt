@@ -60,6 +60,7 @@ add_link_options(
 # Dependencies
 # -----------------------------------------------------------------------------
 include(deps/ConfigureAndIncludeFmt)
+include(deps/ConfigureAndIncludeSpdlog)
 include(deps/ConfigureAndIncludeWil)
 
 # -----------------------------------------------------------------------------
