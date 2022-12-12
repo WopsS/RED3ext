@@ -1,3 +1,6 @@
+[submodule "deps/detours"]
+	path = deps/detours
+	url = https://github.com/microsoft/Detours.git
 [submodule "deps/fmt"]
 	path = deps/fmt
 	url = https://github.com/fmtlib/fmt.git
