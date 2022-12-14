@@ -147,6 +147,11 @@ void PluginSystem::Shutdown()
     spdlog::info("{} plugin(s) unloaded", size);
 }
 
+const PluginSystem::Map_t& PluginSystem::GetPlugins() const
+{
+    return m_plugins;
+}
+
 void PluginSystem::Load(const std::filesystem::path& aPath, bool aUseAlteredSearchPath)
 {
     spdlog::trace(L"Loading plugin from '{}'...", aPath);

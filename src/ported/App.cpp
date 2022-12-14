@@ -5,6 +5,7 @@
 #include "Version.hpp"
 
 #include "Hooks/Main_Hooks.hpp"
+#include "Hooks/CRunningState_Hooks.hpp"
 
 namespace
 {
@@ -115,7 +116,7 @@ void App::Destruct()
         DetourTransaction transaction;
         if (transaction.IsValid())
         {
-            auto success = Hooks::Main::Detach();
+            auto success = Hooks::CRunningState::Detach() && Hooks::Main::Detach();
             if (success)
             {
                 transaction.Commit();
@@ -179,7 +180,7 @@ bool App::AttachHooks() const
         return false;
     }
 
-    auto success = Hooks::Main::Attach();
+    auto success = Hooks::Main::Attach() && Hooks::CRunningState::Attach();
     if (success)
     {
         return transaction.Commit();

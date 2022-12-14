@@ -4,6 +4,7 @@
 Plugin::Plugin(const std::filesystem::path& aPath, wil::unique_hmodule aModule)
     : m_path(aPath)
     , m_module(std::move(aModule))
+    , m_updateFn(nullptr)
 {
 }
 
@@ -43,6 +44,7 @@ bool Plugin::Main(EMainReason aReason)
                 return false;
             }
 
+            m_updateFn = reinterpret_cast<Update_t>(GetProcAddress(module, "Update"));
             spdlog::trace(L"'Main' function called successfully");
         }
         catch (const std::exception& e)
@@ -66,4 +68,12 @@ bool Plugin::Main(EMainReason aReason)
     }
 
     return true;
+}
+
+void Plugin::Update() const
+{
+    if (m_updateFn)
+    {
+        m_updateFn();
+    }
 }

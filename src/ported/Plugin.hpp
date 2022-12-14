@@ -22,8 +22,13 @@ public:
     HMODULE GetModule() const;
 
     bool Main(EMainReason aReason);
+    void Update() const;
 
 private:
+    using Update_t = void(*)();
+
     std::filesystem::path m_path;
     wil::unique_hmodule m_module;
+
+    Update_t m_updateFn;
 };

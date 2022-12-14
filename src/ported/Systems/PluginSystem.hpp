@@ -8,6 +8,8 @@
 class PluginSystem : public ISystem
 {
 public:
+    using Map_t = std::unordered_map<HMODULE, std::shared_ptr<Plugin>>;
+
     PluginSystem(const Config::PluginsConfig& aConfig, const Paths& aPaths);
     ~PluginSystem() = default;
 
@@ -16,8 +18,9 @@ public:
     void Startup() final;
     void Shutdown() final;
 
+    const Map_t& GetPlugins() const;
+
 private:
-    using Map_t = std::unordered_map<HMODULE, std::shared_ptr<Plugin>>;
     using MapIter_t = Map_t::iterator;
 
     void Load(const std::filesystem::path& aPath, bool aUseAlteredSearchPath);
