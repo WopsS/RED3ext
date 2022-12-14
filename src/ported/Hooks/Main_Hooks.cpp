@@ -10,10 +10,10 @@ namespace
 {
 bool isAttached = false;
 
-int32_t _Main(wchar_t*);
+int32_t _Main(char*);
 Hook<decltype(&_Main)> Main_fnc(Addresses::Global_Main, &_Main);
 
-int32_t _Main(wchar_t* aCmdLine)
+int32_t _Main(char* aCmdLine)
 {
     try
     {
