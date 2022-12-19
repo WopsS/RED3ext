@@ -150,5 +150,6 @@ const std::vector<FileVer> Image::GetSupportedVersions() const
 {
     static FileVer version1_32(3, 0, 19, 14337);
     static FileVer version4_00(4, 0, 0, 65171);
-    return {version4_00};
+    static FileVer version4_00_hotfix(4, 0, 1, 427);
+    return {version4_00_hotfix};
 }
