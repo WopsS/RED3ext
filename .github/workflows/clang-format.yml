@@ -8,6 +8,9 @@ on:
       - '**.cpp'
   pull_request:
 
+env:
+  LLVM_VERSION: 15
+
 jobs:
   format:
     name: Check the formatting
@@ -18,7 +21,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          submodules: recursive
+
+      - name: Pin to a specific version
+        run: |
+          $latestChocoVersion = (Get-LatestChocoPackageVersion -TargetVersion $env:LLVM_VERSION -PackageName "llvm")
+          Choco-Install -PackageName llvm -ArgumentList '--allow-downgrade', '--version', $latestChocoVersion
 
       - name: Run clang-format
         env:
