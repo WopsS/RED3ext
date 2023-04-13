@@ -11,7 +11,3 @@ BreakInheritanceList: BeforeComma
 KeepEmptyLinesAtTheStartOfBlocks: false
 PointerAlignment: Left
 SpaceAfterTemplateKeyword: false
-
-# Uncomment these after GitHub's Windows runner supports LLVM 15.
-#IndentRequiresClause: false
-#RequiresClausePosition: OwnLine

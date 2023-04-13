@@ -7,9 +7,12 @@ on:
       - '**.hpp'
       - '**.cpp'
   pull_request:
+    paths:
+      - '**.hpp'
+      - '**.cpp'
 
 env:
-  LLVM_VERSION: 15
+  LLVM_VERSION: 16
 
 jobs:
   format:
@@ -32,17 +35,10 @@ jobs:
             RED3EXT_COMMIT_BEFORE: ${{ github.event.pull_request.base.sha || github.event.before }}
             RED3EXT_COMMIT_AFTER: ${{ github.sha }}
         run: |
-          $output = (git `
-                      -c core.autocrlf=false `
-                      -c core.eol=lf `
-                      -c color.ui=always `
-                      clang-format `
-                        --style file `
-                        --diff $env:RED3EXT_COMMIT_BEFORE $env:RED3EXT_COMMIT_AFTER
-                    )?.Trim()
-
-          Write-Output $output
-
-          if ($output -ne $null -and $output -ine "no modified files to format") {
-            exit 1
-          }
+          git `
+            -c core.autocrlf=false `
+            -c core.eol=lf `
+            -c color.ui=always `
+            clang-format `
+              --style file `
+              --diff $env:RED3EXT_COMMIT_BEFORE $env:RED3EXT_COMMIT_AFTER
