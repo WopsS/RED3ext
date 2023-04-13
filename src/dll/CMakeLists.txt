@@ -55,14 +55,7 @@ target_link_libraries(
 
 target_precompile_headers(RED3ext.Dll PRIVATE stdafx.hpp)
 
-get_target_property(RED3EXT_RESOURCE_PRODUCT_NAME RED3ext.Dll OUTPUT_NAME)
-
-set(RED3EXT_RESOURCE_FILE_DESCRIPTION "A script extender for REDengine 3.")
-set(RED3EXT_RESOURCE_INTERNAL_NAME "${RED3EXT_RESOURCE_PRODUCT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
-set(RED3EXT_RESOURCE_ORIGINAL_NAME "${RED3EXT_RESOURCE_PRODUCT_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
-
-configure_file(
-  "${RED3EXT_CMAKE_TEMPLATES_DIR}/resource.rc.in"
-  "${CMAKE_CURRENT_SOURCE_DIR}/resource.rc"
-  @ONLY
+configure_resource_rc(
+  RED3ext.Dll
+  "A script extender for REDengine 3."
 )
