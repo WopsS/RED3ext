@@ -3,7 +3,17 @@ name: Build Workflow
 on:
   push:
     branches: '**'
+    paths:
+      - '**.hpp'
+      - '**.cpp'
+      - '**/CMakeLists.txt'
+      - 'cmake/**'
   pull_request:
+    paths:
+      - '**.hpp'
+      - '**.cpp'
+      - '**/CMakeLists.txt'
+      - 'cmake/**'
 
 jobs:
   build:
