@@ -6,6 +6,11 @@ set_target_properties(
       OUTPUT_NAME winmm
 )
 
+configure_resource_rc(
+  RED3ext.Loader
+  "The loader for ${PROJECT_NAME}."
+)
+
 set(
   RED3EXT_LOADER_HEADER_FILES
     stdafx.hpp
@@ -46,12 +51,8 @@ set(
     main.def
 )
 
-set(
-  RED3EXT_LOADER_RC_FILES
-    resource.rc
-)
+source_group(CMake REGULAR_EXPRESSION cmake_pch.*)
 
-source_group(cmake REGULAR_EXPRESSION cmake_pch.*)
 source_group(
   TREE
     "${CMAKE_CURRENT_SOURCE_DIR}"
@@ -59,7 +60,13 @@ source_group(
     ${RED3EXT_LOADER_HEADER_FILES}
     ${RED3EXT_LOADER_SRC_FILES}
     ${RED3EXT_LOADER_DEF_FILES}
-    ${RED3EXT_LOADER_RC_FILES}
+)
+
+source_group(
+  TREE
+    "${CMAKE_CURRENT_BINARY_DIR}"
+  FILES
+    ${RED3EXT_RC_FILE}
 )
 
 target_include_directories(
@@ -74,7 +81,7 @@ target_sources(
       ${RED3EXT_LOADER_HEADER_FILES}
       ${RED3EXT_LOADER_SRC_FILES}
       ${RED3EXT_LOADER_DEF_FILES}
-      ${RED3EXT_LOADER_RC_FILES}
+      ${RED3EXT_RC_FILE}
 )
 
 target_link_libraries(
@@ -84,8 +91,3 @@ target_link_libraries(
 )
 
 target_precompile_headers(RED3ext.Loader PRIVATE stdafx.hpp)
-
-configure_resource_rc(
-  RED3ext.Loader
-  "The loader for ${PROJECT_NAME}."
-)

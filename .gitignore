@@ -1,6 +1,3 @@
 build/
 
-src/**/*.aps
-src/**/*.rc
-
 src/ported/Version.hpp

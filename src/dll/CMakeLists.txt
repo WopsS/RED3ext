@@ -6,6 +6,11 @@ set_target_properties(
       OUTPUT_NAME ${PROJECT_NAME}
 )
 
+configure_resource_rc(
+  RED3ext.Dll
+  "A script extender for REDengine 3."
+)
+
 set(
   RED3EXT_DLL_HEADER_FILES
     stdafx.hpp
@@ -17,19 +22,21 @@ set(
     main.cpp
 )
 
-set(
-  RED3EXT_DLL_RC_FILES
-    resource.rc
-)
+source_group(CMake REGULAR_EXPRESSION cmake_pch.*)
 
-source_group(cmake REGULAR_EXPRESSION cmake_pch.*)
 source_group(
   TREE
     "${CMAKE_CURRENT_SOURCE_DIR}"
   FILES
     ${RED3EXT_DLL_HEADER_FILES}
     ${RED3EXT_DLL_SRC_FILES}
-    ${RED3EXT_DLL_RC_FILES}
+)
+
+source_group(
+  TREE
+    "${CMAKE_CURRENT_BINARY_DIR}"
+  FILES
+    ${RED3EXT_RC_FILE}
 )
 
 target_include_directories(
@@ -43,7 +50,7 @@ target_sources(
     PRIVATE
       ${RED3EXT_DLL_HEADER_FILES}
       ${RED3EXT_DLL_SRC_FILES}
-      ${RED3EXT_DLL_RC_FILES}
+      ${RED3EXT_RC_FILE}
 )
 
 target_link_libraries(
@@ -54,8 +61,3 @@ target_link_libraries(
 )
 
 target_precompile_headers(RED3ext.Dll PRIVATE stdafx.hpp)
-
-configure_resource_rc(
-  RED3ext.Dll
-  "A script extender for REDengine 3."
-)
