@@ -58,16 +58,6 @@ add_link_options(
 )
 
 # -----------------------------------------------------------------------------
-# Dependencies
-# -----------------------------------------------------------------------------
-include(deps/ConfigureAndIncludeDetours)
-include(deps/ConfigureAndIncludeFmt)
-include(deps/ConfigureAndIncludeSpdlog)
-include(deps/ConfigureAndIncludeToml11)
-include(deps/ConfigureAndIncludeTslOrderedMap)
-include(deps/ConfigureAndIncludeWil)
-
-# -----------------------------------------------------------------------------
 # Options / configuration related only to this project
 # -----------------------------------------------------------------------------
 option(RED3EXT_EXTRA_WARNINGS "Enable extra warnings." ON)

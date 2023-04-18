@@ -22,7 +22,7 @@ set(
     main.cpp
 )
 
-source_group(CMake REGULAR_EXPRESSION cmake_pch.*)
+source_group(cmake REGULAR_EXPRESSION cmake_pch.*)
 
 source_group(
   TREE
@@ -51,13 +51,6 @@ target_sources(
       ${RED3EXT_DLL_HEADER_FILES}
       ${RED3EXT_DLL_SRC_FILES}
       ${RED3EXT_RC_FILE}
-)
-
-target_link_libraries(
-  RED3ext.Dll
-    PRIVATE
-      RED3ext.Core
-      RED4ext.Ported
 )
 
 target_precompile_headers(RED3ext.Dll PRIVATE stdafx.hpp)
