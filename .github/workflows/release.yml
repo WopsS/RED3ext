@@ -48,12 +48,6 @@ jobs:
             --prefix "${{ github.workspace }}/build/install" `
             --config ${env:RED3EXT_CONFIG}
 
-      - name: Copy license files
-        working-directory: build/install
-        run: |
-          Copy-Item -Path ../../LICENSE.md -Destination ./red3ext/LICENSE.txt
-          Copy-Item -Path ../../THIRD_PARTY_LICENSES.md -Destination ./red3ext/THIRD_PARTY_LICENSES.txt
-
       - name: Create ZIP
         working-directory: build/install
         run: 7z a -r red3ext-${env:RED3EXT_VERSION}.zip *.dll *.txt
