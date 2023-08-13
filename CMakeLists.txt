@@ -15,7 +15,7 @@ project(
 )
 
 # -----------------------------------------------------------------------------
-# General configuration / options / variables
+# General configuration and variables
 # -----------------------------------------------------------------------------
 configure_default_output_directories()
 
@@ -28,8 +28,14 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(RED3EXT_CMAKE_DIR "${PROJECT_SOURCE_DIR}/cmake")
 set(RED3EXT_CMAKE_TEMPLATES_DIR "${RED3EXT_CMAKE_DIR}/templates")
 
+# -----------------------------------------------------------------------------
+# Options
+# -----------------------------------------------------------------------------
+option(RED3EXT_INSTALL "Generate the install target." ON)
 option(RED3EXT_CI_RELEASE "When ON version metadata will not be appended to GIT_VERSION." OFF)
-mark_as_advanced(RED3EXT_CI_RELEASE)
+
+option(RED3EXT_EXTRA_WARNINGS "Enable extra warnings." ON)
+option(RED3EXT_TREAT_WARNINGS_AS_ERRORS "Treat compiler warnings as errors." OFF)
 
 # -----------------------------------------------------------------------------
 # Compiler options for all projects
@@ -60,7 +66,6 @@ add_link_options(
 # -----------------------------------------------------------------------------
 # Options / configuration related only to this project
 # -----------------------------------------------------------------------------
-option(RED3EXT_EXTRA_WARNINGS "Enable extra warnings." ON)
 if(RED3EXT_EXTRA_WARNINGS)
   if(MSVC)
     add_compile_options(/W4)
@@ -73,7 +78,6 @@ if(RED3EXT_EXTRA_WARNINGS)
   endif()
 endif()
 
-option(RED3EXT_TREAT_WARNINGS_AS_ERRORS "Treat compiler warnings as errors." OFF)
 if(RED3EXT_TREAT_WARNINGS_AS_ERRORS)
   if(MSVC)
     add_compile_options(/WX)
@@ -86,7 +90,6 @@ if(RED3EXT_TREAT_WARNINGS_AS_ERRORS)
   endif()
 endif()
 
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
 # -----------------------------------------------------------------------------
 # Main projects
 # -----------------------------------------------------------------------------
@@ -96,7 +99,6 @@ add_subdirectory(src)
 # Install
 # -----------------------------------------------------------------------------
 if(NOT CMAKE_SKIP_INSTALL_RULES)
-  option(RED3EXT_INSTALL "Generate the install target." ON)
   if(RED3EXT_INSTALL)
     set(RED3EXT_INSTALL_X64_DIR bin/x64)
     set(RED3EXT_INSTALL_BIN_DIR red3ext)
