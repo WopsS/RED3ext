@@ -6,10 +6,14 @@ on:
     paths:
       - '**.hpp'
       - '**.cpp'
+      - '.clang-format'
+      - '.github/workflows/clang-format.yml'
   pull_request:
     paths:
       - '**.hpp'
       - '**.cpp'
+      - '.clang-format'
+      - '.github/workflows/clang-format.yml'
 
 env:
   LLVM_VERSION: 16

@@ -8,12 +8,16 @@ on:
       - '**.cpp'
       - '**/CMakeLists.txt'
       - 'cmake/**'
+      - 'deps/**'
+      - '.github/workflows/build.yml'
   pull_request:
     paths:
       - '**.hpp'
       - '**.cpp'
       - '**/CMakeLists.txt'
       - 'cmake/**'
+      - 'deps/**'
+      - '.github/workflows/build.yml'
 
 jobs:
   build:
